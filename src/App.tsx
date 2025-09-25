@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [isAccent, setIsAccent] = useState(false);
 
   useEffect(() => {
     // important, never remove this sdk init
@@ -40,6 +41,14 @@ function App() {
           </div>
           <Button type="button" onClick={() => setCount((prev) => prev + 1)} className="w-full">
             Increase count
+          </Button>
+          <Button
+            type="button"
+            variant={isAccent ? "destructive" : "solid"}
+            onClick={() => setIsAccent((prev) => !prev)}
+            className="w-full transition-colors"
+          >
+            {isAccent ? "Reset button color" : "Change button color"}
           </Button>
         </section>
       </div>
