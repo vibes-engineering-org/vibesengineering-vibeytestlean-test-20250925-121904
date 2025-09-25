@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 function App() {
   const [count, setCount] = useState(0);
   const [isAccent, setIsAccent] = useState(false);
+  const [colorIndex, setColorIndex] = useState(0);
+
+  const colorCycle = [
+    "bg-indigo-600 text-white hover:bg-indigo-500 active:bg-indigo-700",
+    "bg-emerald-500 text-white hover:bg-emerald-400 active:bg-emerald-600",
+    "bg-amber-500 text-slate-950 hover:bg-amber-400 active:bg-amber-600",
+  ];
 
   useEffect(() => {
     // important, never remove this sdk init
@@ -49,6 +56,14 @@ function App() {
             className="w-full transition-colors"
           >
             {isAccent ? "Reset button color" : "Change button color"}
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => setColorIndex((prev) => (prev + 1) % colorCycle.length)}
+            className={`w-full transition-colors ${colorCycle[colorIndex]}`}
+          >
+            Cycle button color
           </Button>
         </section>
       </div>
